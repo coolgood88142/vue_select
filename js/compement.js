@@ -24,22 +24,22 @@ let districts = [
 ];
 
 Vue.component('counties-component', {
-    template: '<select name = "counties" v-on:click="onChange"><option v-for="todo in todos1" :value="todo.value">{{ todo.text }}</option></select>',
+    template: '<select v-model="selected" name = "counties" v-on:change="onChange"><option v-for="todo in todos1 " :value="todo.value">{{ todo.text }}</option></select>',
     data: function () {
         return {
-            todos1: counties
+            todos1: counties,
+            selected: 0
         }
     },
     methods: {
-        onChange(event){
-            let index = event.target.value;
-            this.todos2 = districts[index];
+        onChange: function () {
+            this.$emit("todos2", districts[1]);
         }
     }
 })
 
 Vue.component('districts-component', {
-    template: '<select name = "districts"><option v-for="todos in todos2" :value="todos.value">{{ todos.text }}</option></select>',
+    template: '<select name = "districts" ><option v-for="todo in todos2" :value="todo.value">{{ todo.text }}</option></select>',
     data: function () {
         return {
             todos2: districts[0]

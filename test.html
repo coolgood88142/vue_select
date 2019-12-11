@@ -1,0 +1,47 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div id="app">
+    <select name="parent" v-on:change="parentSelect">
+        <option v-for="(item, index) in list" :value="item.name" :data-index='index'>{{item.nameCn }}</option>
+    </select>
+    <select name="sub">
+        <option v-for="(item, index) in list[parentIndex].sub" :value="item.name" :data-index='index'>{{item.nameCn }}
+        </option>
+    </select>
+</div>
+<script src="./js/vue.js"></script>
+<script>
+    new Vue({
+            el: '#app',
+            data: {
+                parentIndex: 0,
+                list: [{
+                    'name': 'AAAA',
+                    'nameCn': '中文1',
+                    sub: [{
+                        'name': 'CCCC',
+                        'nameCn': '中文3'
+                    }, {
+                        'name': 'DDDDD',
+                        'nameCn': '中文4'
+                    }]
+                }, {
+                    'name': 'BBBB',
+                    'nameCn': '中文2',
+                    sub: [{
+                        'name': 'CCCC',
+                        'nameCn': '中文5'
+                    }, {
+                        'name': 'DDDDD',
+                        'nameCn': '中文6'
+                    }]
+                }]
+            },
+            methods: {
+                parentSelect: function (e) {
+                    this.parentIndex = e.target.options.selectedIndex
+                }
+            }
+        })
+</script>
+</html>
