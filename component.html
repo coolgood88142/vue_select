@@ -1,8 +1,12 @@
 ﻿<html>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <div id="app">
-        <counties-component></counties-component>
-        <districts-component></districts-component>
+        <select v-model="selected" id="counties" v-on:change="onChange">
+            <option v-for="todo in todos1 " :value="todo.value">{{ todo.text }}</option>
+        </select>
+        <select id="districts">
+            <option v- bind:item="todo" v-for="todo in todos2" :value="todo.value">{{ todo.text }}</option>
+        </select>
     </div>
     <script src="./js/vue.js"></script>
     <script src="./js/compement.js"></script>
