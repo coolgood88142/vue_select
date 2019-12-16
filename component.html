@@ -5,7 +5,7 @@
             <option v-for="todo in todos1 " :value="todo.value">{{ todo.text }}</option>
         </select>
         <select id="districts">
-            <option v- bind:item="todo" v-for="todo in todos2" :value="todo.value">{{ todo.text }}</option>
+            <option v-bind:item="todo" v-for="todo in todos2" :value="todo.value">{{ todo.text }}</option>
         </select>
     </div>
     <script src="./js/vue.js"></script>

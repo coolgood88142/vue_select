@@ -1,0 +1,18 @@
+<html>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <div id="app">
+        {{message}}
+            <input type="text" v-model="year_text" v-on:keyup="onKeyup" id="year" size="3" value=""/>
+        <label>年</label>
+            <select v-model="month_selected" id="month" v-on:change="onChange" />
+                <option v-for="month in months" :value="month.value">{{ month.text }}
+            </select>
+        <label>月</label>
+            <select v-model="day_selected" id="day" />
+                <option v-bind:item="day" v-for="day in days" :value="day">{{ day }}
+            </select>
+        <label>日</label>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script src="./js/days.js"></script>
+</html>
