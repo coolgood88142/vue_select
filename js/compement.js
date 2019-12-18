@@ -28,21 +28,25 @@ let districts = [
 
 
 Vue.component('districts', {
-    props: ['todos2'],
-    template: '#districts'
+    props: ['districts_array'],
+    data: function () {
+        return {
+            districts_array: districts[0]
+        }
+    },
+    template: '<select id="districts"><option value="" disabled selected> --請選擇--</option ><option v-for="districts in districts_array" : value="districts.value">{{ districts.text }}</option></select >'
 })
 
 
 let app = new Vue({
     el: '#app',
     data:{
-        todos1: counties,
-        todos2: districts[0],
-        selected: 0
+        counties_array: counties,
+        counties_selected: ''
     },
     methods: {
         onChange:function(){
-            this.todos2 = districts[this.selected];
+            this.districts_array = districts[this.counties_selected];
         }
     }
 })
