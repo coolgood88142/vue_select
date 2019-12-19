@@ -1,11 +1,14 @@
 ﻿<html>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <div id="app">
-        <select v-model="counties_selected" id="counties" v-on:change="onChange">
+        <select v-model="counties_selected" id="counties">
             <option value="" disabled selected>--請選擇--</option>
             <option v-for="counties in counties_array" :value="counties.value">{{ counties.text }}</option>
         </select>
-        <districts></districts>
+        <select id="districts">
+            <option value="" disabled selected>--請選擇--</option>
+        </select>
+        <test v-bind:item="val" v-for="val in districts_array"></test>
     </div>
     <script src="./js/vue.js"></script>
     <script src="./js/compement.js"></script>
