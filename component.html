@@ -8,7 +8,7 @@
         <select id="districts">
             <option value="" disabled selected>--請選擇--</option>
         </select>
-        <test v-bind:item="val" v-for="val in districts_array"></test>
+        <test v-for="val in districts_array" :val="val"></test>
     </div>
     <script src="./js/vue.js"></script>
     <script src="./js/compement.js"></script>

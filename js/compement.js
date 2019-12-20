@@ -27,9 +27,14 @@ let districts = [
 ];
 
 
+// Vue.component('test', {
+//     props: ['item'],
+//     template: '<li>{{ item.text }}</li>'
+// })
+
 Vue.component('test', {
-    props: ['item'],
-    template: '<li>{{ item.text }}</li>'
+    props: ['val'],
+    template: '<option>{{ val.text }}</option>'
 })
 
 

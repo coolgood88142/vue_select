@@ -27,10 +27,10 @@ let days = [
     31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
 ];
 
-Vue.component('days', {
-    props: ['days'],
-    template: '#day'
-});
+// Vue.component('days', {
+//     props: ['days'],
+//     template: '#day'
+// });
 
 let app = new Vue({
     el: '#app',
@@ -39,34 +39,29 @@ let app = new Vue({
         years: years,
         months: months,
         days: 31,
-        years_selected: 0,
-        months_selected: 31
+        years_selected: '',
+        months_selected: '',
+        days_selected: ''
     },
     computed: {
         days: function () {
             let day_array = [];
-            for (i = 1; i < this.days+1; i++) {
+            for (i = 1; i < this.days + 1; i++) {
                 day_array.push(i)
             }
-
+            
             return day_array;
         }
     },
     methods: {
+        onDeault: function () {
+            this.months_selected = '';
+            this.days_selected = '';
+        },
         onChange: function () {
             this.days = this.months_selected;
-            if (this.years_selected % 2 == 0){
-                //要怎麼執行
-                days(this.days);
-                // if (yaer % 2 == 0 && this.month_selected == 1) {
-                //     if (this.days.length < 29){
-                //         this.days.push(29);
-                //     }
-                // }else{
-                //     if (this.days.length == 29){
-                //         this.days.splice(this.days.length-1, 1);
-                //     }
-                // }
+            if (this.years_selected % 2 == 0) {
+                this.days+=1
             }
         }
     }
