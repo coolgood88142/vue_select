@@ -5,7 +5,6 @@ let months = [
 let begin_year = 1990;
 let end_year = 2020;
 
-
 function DefaultYears(){
     let years_array = [];
     let count = 0;
