@@ -26,23 +26,32 @@ let districts = [
     ]
 ];
 
-
-// Vue.component('test', {
-//     props: ['item'],
-//     template: '<li>{{ item.text }}</li>'
-// })
-
-Vue.component('test', {
-    props: ['val'],
-    template: '<option>{{ val.text }}</option>'
+Vue.component('districts_selct', {
+    props: {
+        districts_array: {
+            type: Array,
+            required: true
+        },
+        districts_selected: {
+            type: String
+        }
+    },
+    template: '<select v-model="districts_selected" id="districts"><option value="" disabled selected>--請選擇--</option ><option v-for="val in districts_array" :value="val.value">{{ val.text }}</option></select >'
 })
 
-
+let num_text = '郵遞區號為:';
 let app = new Vue({
     el: '#app',
     data:{
+        message: 'Vue練習:',
         counties_array: counties,
         districts_array: districts[0],
-        counties_selected: ''
+        counties_selected: '',
+        districts_selected: ''
+    },
+    methods: {
+        onChange: function () {
+            this.districts_array = districts[this.counties_selected];
+        }
     }
 })

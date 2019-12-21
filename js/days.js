@@ -1,66 +1,51 @@
-let years = [
-    { text: 100, value: 0 }, { text: 101, value: 1 },
-    { text: 102, value: 2 }, { text: 103, value: 3 },
-    { text: 104, value: 4 }, { text: 105, value: 5 },
-    { text: 106, value: 6 }, { text: 107, value: 7 },
-    { text: 108, value: 8 }, { text: 109, value: 9 },
-    { text: 110, value: 10 }
-]
-
 let months = [
-    { text: 1, value: 31 }, { text: 2, value: 28 },
-    { text: 3, value: 31 }, { text: 4, value: 30 },
-    { text: 5, value: 31 }, { text: 6, value: 30 },
-    { text: 7, value: 31 }, { text: 8, value: 31 },
-    { text: 9, value: 30 }, { text: 10, value: 31 },
-    { text: 11, value: 30 }, { text: 12, value: 31 },
-];
-
-let day1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
-
-let day2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
-
-let day3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
-
-
-let days = [
     31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
 ];
 
-// Vue.component('days', {
-//     props: ['days'],
-//     template: '#day'
-// });
+let begin_year = 1990;
+let end_year = 2020;
+
+
+function DefaultYears(){
+    let years_array = [];
+    let count = 0;
+    for (let i = begin_year; i < end_year+1; i++) {
+        years_array.push({ text: i, value: count });
+        count++;
+    }
+    return years_array
+}
+
+function DefaultMonths(){
+    let months_array = [];
+    let count = 0;
+    for (let i = 0; i < months.length; i++) {
+        months_array.push({ text: i+1, value: months[i] });
+        count++;
+    }
+    return months_array
+}
 
 let app = new Vue({
     el: '#app',
     data: {
         message: 'Vue練習:',
-        years: years,
-        months: months,
+        years: DefaultYears(),
+        months: DefaultMonths(),
         days: 31,
         years_selected: '',
         months_selected: '',
         days_selected: ''
     },
-    computed: {
-        days: function () {
-            let day_array = [];
-            for (i = 1; i < this.days + 1; i++) {
-                day_array.push(i)
-            }
-            
-            return day_array;
-        }
-    },
     methods: {
-        onDeault: function () {
+        onDateDeault: function () {
             this.months_selected = '';
             this.days_selected = '';
         },
         onChange: function () {
+            this.days_selected = '';
             this.days = this.months_selected;
-            if (this.years_selected % 2 == 0) {
+            if (this.years_selected % 2 == 0 && this.months_selected == 28) {
                 this.days+=1
             }
         }
