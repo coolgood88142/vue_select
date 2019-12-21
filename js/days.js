@@ -16,17 +16,6 @@ let months = [
     { text: 11, value: 30 }, { text: 12, value: 31 },
 ];
 
-let day1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
-
-let day2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
-
-let day3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
-
-
-let days = [
-    31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
-];
-
 // Vue.component('days', {
 //     props: ['days'],
 //     template: '#day'
@@ -60,7 +49,7 @@ let app = new Vue({
         },
         onChange: function () {
             this.days = this.months_selected;
-            if (this.years_selected % 2 == 0) {
+            if (this.years_selected % 2 == 0 && this.days == 28) {
                 this.days+=1
             }
         }

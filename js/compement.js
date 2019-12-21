@@ -41,6 +41,7 @@ Vue.component('test', {
 let app = new Vue({
     el: '#app',
     data:{
+        message: 'Vue練習:',
         counties_array: counties,
         districts_array: districts[0],
         counties_selected: ''
