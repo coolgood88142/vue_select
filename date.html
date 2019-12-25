@@ -2,7 +2,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <div id="app">
         {{message}}
-            <select v-model="years_selected" id="year" v-on:change="onDateDeault">
+            <select v-model="years_selected" id="year" v-on:change="onDeaultDate">
                 <option value="" disabled selected>--請選擇--</option>
                 <option v-for="year in years" :value="year.value">{{ year.text }}</option>
             </select>
@@ -19,5 +19,5 @@
         <label>日</label>
     </div>
     <script src="./js/vue.js"></script>
-    <script src="./js/days.js"></script>
+    <script src="./js/date.js"></script>
 </html>

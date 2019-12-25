@@ -5,39 +5,35 @@ let months = [
 let begin_year = 1990;
 let end_year = 2020;
 
-function DefaultYears(){
-    let years_array = [];
-    let count = 0;
-    for (let i = begin_year; i < end_year+1; i++) {
-        years_array.push({ text: i, value: count });
-        count++;
+function DefaultDateData(type) {
+    let date_array = []
+    if (type == 0) {
+        let count = 0;
+        for (let i = begin_year; i < end_year+1; i++) {
+            date_array.push({ text: i, value: count });
+            count++;
+        }
+    }else if (type == 1) {
+        for (let i = 0; i < months.length; i++) {
+            date_array.push({ text: i+1, value: months[i] });
+        }
     }
-    return years_array
-}
-
-function DefaultMonths(){
-    let months_array = [];
-    let count = 0;
-    for (let i = 0; i < months.length; i++) {
-        months_array.push({ text: i+1, value: months[i] });
-        count++;
-    }
-    return months_array
+    return date_array;
 }
 
 let app = new Vue({
     el: '#app',
     data: {
         message: 'Vue練習:',
-        years: DefaultYears(),
-        months: DefaultMonths(),
+        years: DefaultDateData(0),
+        months: DefaultDateData(1),
         days: 31,
         years_selected: '',
         months_selected: '',
         days_selected: ''
     },
     methods: {
-        onDateDeault: function () {
+        onDeaultDate: function () {
             this.months_selected = '';
             this.days_selected = '';
         },
