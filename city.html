@@ -2,11 +2,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <div id="app">
         {{message}}
-        <select v-model="counties_selected" id="counties" v-on:change="onChange">
-            <option value="" disabled selected>--請選擇--</option>
-            <option v-for="counties in counties_array" :value="counties.value">{{ counties.text }}</option>
-        </select>
-        <districts_selct :districts_selected="districts_selected" :districts_array="districts_array"></districts_selct>
+        <counties_select :counties_selected="counties_selected" :counties_array="counties_array" :UpdateDistricts="UpdateDistricts"></counties_select>
+        <districts_select :districts_selected="districts_selected" :districts_array="districts_array"></districts_select>
     </div>
     <script src="./js/vue.js"></script>
     <script src="./js/city.js"></script>
