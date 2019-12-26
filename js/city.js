@@ -26,35 +26,33 @@ let districts = [
     ]
 ];
 
+var bus = new Vue();
 Vue.component('counties_select', {
-    props: {
-        counties_array: {
-            type: Array,
-            required: true
-        },
-        counties_selected: {
-            type: String
-        },
-        UpdateDistricts :{
-            type: Function
-        }
-    },
+	data: function(){
+		return {
+			counties_array: counties,
+			counties_selected: ''
+		}
+	},
     template: '<select v-model="counties_selected" id="counties" @change="UpdateDistricts">' +
         '<option value="" disabled selected>--請選擇--</option>' +
         '<option v-for="counties in counties_array" :value="counties.value">{{ counties.text }}</option>' +
         '</select>'
+	,
+	methods: {
+		UpdateDistricts:function(){
+			this.$emit('UpdateDistricts');
+		}
+    }
 })
 
 Vue.component('districts_select', {
-    props: {
-        districts_array: {
-            type: Array,
-            required: true
-        },
-        districts_selected: {
-            type: String
-        }
-    },
+	data: function(){
+		return {
+			districts_array: '',
+			districts_selected: ''
+		}
+	},
     template: '<select v-model="districts_selected" id="districts">'+
         '<option value="" disabled selected>--請選擇--</option>'+
         '<option v-for="districts in districts_array" :value="districts.value">{{ districts.text }}</option>'+
@@ -65,14 +63,5 @@ let app = new Vue({
     el: '#app',
     data:{
         message: 'Vue練習:',
-        counties_array: counties,
-        districts_array: '',
-        counties_selected: '',
-        districts_selected: ''
-    },
-    methods: {
-        UpdateDistricts:function(){
-            this.districts_array = districts[this.counties_selected];
-        }
     }
 })
