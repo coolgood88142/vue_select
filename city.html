@@ -2,8 +2,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <div id="app">
         {{message}}
-        <counties_select></counties_select>
-        <districts_select></districts_select>
+        <counties_select :counties_selected="counties_selected" :counties_array="counties_array"></counties_select>
+        <districts_select :districts_selected="districts_selected" :districts_array="districts_array"></districts_select>
     </div>
     <script src="./js/vue.js"></script>
     <script src="./js/city.js"></script>
